@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/cart.css">
 
-    <title>Giỏ hàng</title>
+    <title> Giỏ hàng </title>
 </head>
 
 <body>
