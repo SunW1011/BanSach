@@ -1,6 +1,6 @@
 <section class="recently">
                 <div class="title">
-                    <h1>Cà phê</h1>
+                    <h1>Sách Truyện, Tiểu Thuyết</h1>
                 </div>
                 <div class="product-recently">
                     <div class="row">

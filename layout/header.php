@@ -13,7 +13,7 @@ require_once('database/dbhelper.php');
     <link rel="stylesheet" href="css/details.css">
     <link rel="stylesheet" href="plugin/fontawesome/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <title>Hutech Ẩm Thực</title>
+    <title>Books Store</title>
 </head>
 
 <body>
@@ -27,7 +27,7 @@ require_once('database/dbhelper.php');
                     <ul>
                         <li><a href="index.php">Trang chủ</a></li>
                         <li class="nav-cha">
-                            <a href="thucdon.php?page=thucdon">Thực đơn</a>
+                            <a href="thucdon.php?page=thucdon">Thể loại sách</a>
                             <ul class="nav-con">
                                 <?php
                                     $sql="SELECT * FROM category";
