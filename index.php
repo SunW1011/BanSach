@@ -10,7 +10,7 @@ require_once('database/dbhelper.php');
             <section class="search-quan">
                 <i class="fas fa-search"></i>
                 <form action="thucdon.php" method="GET">
-                    <input name="search" type="text" placeholder="Tìm sách">
+                    <input name="search" type="text" placeholder="Tìm món hoặc thức ăn">
                 </form>
             </section>
             <section class="main-layout">
@@ -25,7 +25,7 @@ require_once('database/dbhelper.php');
                                         <a href="thucdon.php?id_category=' . $item['id'] . '">
                                             <p>' . $item['name'] . '</p>
                                             <div class="bg"></div>
-                                            <img src="images/bg/sach.webp" alt="">
+                                            <img src="images/bg/gantoi.jpeg" alt="">
                                         </a>
                                     </div>
                                     ';
@@ -41,7 +41,7 @@ require_once('database/dbhelper.php');
         <section class="main">
             <section class="recently">
                 <div class="title">
-                    <h1>Được chọn nhiều nhất</h1>
+                    <h1>Được yêu thích nhất</h1>
                 </div>
                 <div class="product-recently">
                     <div class="row">
@@ -82,7 +82,7 @@ require_once('database/dbhelper.php');
 
             <section class="restaurants">
                 <div class="title">
-                    <h1>Sách trên trang web <span class="green">Sách Hutech</span></h1>
+                    <h1>Thực đơn tại quán <span class="green">Thành Coffee</span></h1>
                 </div>
                 <div class="product-restaurants">
                     <div class="row">
