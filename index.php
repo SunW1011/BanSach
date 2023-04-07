@@ -1,168 +1,156 @@
-<?php require "layout/header.php"; ?>
-<?php
-require_once('database/config.php');
-require_once('database/dbhelper.php');
-?>
-<!-- END HEADR -->
-<main>
-    <div class="container">
-        <div id="ant-layout">
-            <section class="search-quan">
-                <i class="fas fa-search"></i>
-                <form action="thucdon.php" method="GET">
-                    <input name="search" type="text" placeholder="Tìm sách">
-                </form>
-            </section>
-            <section class="main-layout">
-                <div class="row">
-                    <?php
-                    $sql = 'select * from category';
-                    $categoryList = executeResult($sql);
-                    $index = 1;
-                    foreach ($categoryList as $item) {
-                        echo '
-                                    <div class="box">
-                                        <a href="thucdon.php?id_category=' . $item['id'] . '">
-                                            <p>' . $item['name'] . '</p>
-                                            <div class="bg"></div>
-                                            <img src="images/bg/sach.webp" alt="">
-                                        </a>
-                                    </div>
-                                    ';
-                    }
-                    ?>
-                </div>
-            </section>
-        </div>
-        <div class="bg-grey">
+<?php require_once('database/dbhelper.php'); ?>
+<!DOCTYPE html>
+<html>
 
-        </div>
-        <!-- END LAYOUT  -->
-        <section class="main">
-            <section class="recently">
-                <div class="title">
-                    <h1>Được chọn nhiều nhất</h1>
-                </div>
-                <div class="product-recently">
-                    <div class="row">
-                        <?php
-                        $sql = 'SELECT * from product, order_details where order_details.product_id=product.id order by order_details.num DESC limit 4';
-                        $productList = executeResult($sql);
-                        $index = 1;
-                        foreach ($productList as $item) {
-                            echo '
-                                <div class="col">
-                                    <a href="details.php?id=' . $item['product_id'] . '">
-                                        <img class="thumbnail" src="admin/product/' . $item['thumbnail'] . '" alt="">
-                                        <div class="title">
-                                            <p>' . $item['title'] . '<br>(<strong>' . $item['number'] . '</strong>)</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>' . number_format($item['price'], 0, ',', '.') . ' VNĐ</span>
-                                        </div>
-                                        <div class="more">
-                                            <div class="star">
-                                                <img src="images/icon/icon-star.svg" alt="">
-                                                <span>4.6</span>
-                                            </div>
-                                            <div class="time">
-                                                <img src="images/icon/icon-clock.svg" alt="">
-                                                <span>15 comment</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                ';
-                        }
-                        ?>
-                    </div>
-                </div>
-            </section>
-            <!-- end Món ngon gần bạn -->
+<head>
+    <title>Thêm Sản Phẩm</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-            <section class="restaurants">
-                <div class="title">
-                    <h1>Sách trên trang web <span class="green">Sách Hutech</span></h1>
-                </div>
-                <div class="product-restaurants">
-                    <div class="row">
-                        <?php
-                        try {
-                            if (isset($_GET['page'])) {
-                                $page = $_GET['page'];
-                            } else {
-                                $page = 1;
-                            }
-                            $limit = 12;
-                            $start = ($page - 1) * $limit;
-                            $sql = "SELECT * FROM product limit $start,$limit";
-                            executeResult($sql);
-                            // $sql = 'select * from product limit $star,$limit';
-                            $productList = executeResult($sql);
+    <!-- summernote -->
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-                            $index = 1;
-                            foreach ($productList as $item) {
-                                echo '
-                                <div class="col">
-                                    <a href="details.php?id=' . $item['id'] . '">
-                                        <img class="thumbnail" src="admin/product/'. $item['thumbnail'] . '" alt="">
-                                        <div class="title">
-                                            <p>' . $item['title'] .  '<br>(<strong>' . $item['number'] . '</strong>)</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>' . number_format($item['price'], 0, ',', '.') . ' VNĐ</span>
-                                        </div>
-                                        <div class="more">
-                                            <div class="star">
-                                                <img src="images/icon/icon-star.svg" alt="">
-                                                <span>4.6</span>
-                                            </div>
-                                            <div class="time">
-                                                <img src="images/icon/icon-clock.svg" alt="">
-                                                <span>15 comment</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                ';
-                            }
-                        } catch (Exception $e) {
-                            die("Lỗi thực thi sql: " . $e->getMessage());
-                        }
-                        ?>
-                    </div>
-                    <div class="pagination">
-                        <ul>
+<body>
+    <div id="wrapper">
+        <header>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="category/index.php">Thống kê</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="category/index.php">Quản lý danh mục</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="product/">Quản lý sản phẩm</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="dashboard.php">Quản lý đơn hàng</a>
+                </li>
+            </ul>
+        </header>
+        <div class="container">
+            <main>
+                <h1>Bảng thống kê</h1>
+                <section class="dashboard">
+                    <div class="table">
+                        <div class="sp">
+                            <p>Sản phẩm</p>
                             <?php
                             $sql = "SELECT * FROM `product`";
                             $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
                             $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result)) {
-                                $numrow = mysqli_num_rows($result);
-                                $current_page = ceil($numrow / 12);
-                                // echo $current_page;
-                            }
-                            for ($i = 1; $i <= $current_page; $i++) {
-                                // Nếu là trang hiện tại thì hiển thị thẻ span
-                                // ngược lại hiển thị thẻ a
-                                if ($i == $current_page) {
-                                    echo '
-                                    <li><a href="?page=' . $i . '">' . $i . '</a></li>';
+                            echo '<span>' . mysqli_num_rows($result) . '</span>';
+                            ?>
+                            <p><a href="product/">xem chi tiết➜</a></p>
+                        </div>
+                        <div class="sp kh">
+                            <p>Khách hàng</p>
+                            <?php
+                            $sql = "SELECT * FROM `user`";
+                            $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+                            $result = mysqli_query($conn, $sql);
+                            echo '<span>' . mysqli_num_rows($result) . '</span>';
+                            ?>
+                            <p><a href="user/">xem chi tiết➜</a></p>
+                        </div>
+                        <div class="sp dm">
+                            <p>Danh mục</p>
+                            <?php
+                            $sql = "SELECT * FROM `category`";
+                            $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+                            $result = mysqli_query($conn, $sql);
+                            echo '<span>' . mysqli_num_rows($result) . '</span>';
+                            ?>
+                            <p><a href="category/">xem chi tiết➜</a></p>
+                        </div>
+                        <div class="sp dh">
+                            <p>Đơn hàng</p>
+                            <?php
+                            $sql = "SELECT * FROM `order_details`";
+                            $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+                            $result = mysqli_query($conn, $sql);
+                            echo '<span>' . mysqli_num_rows($result) . '</span>';
+                            ?>
+                            <p><a href="dashboard.php">xem chi tiết➜</a></p>
+                        </div>
+                    </div>
+                </section>
+                <section class="new-order">
+                    <h4>Đơn hàng mới</h4>
+                    <table>
+                        <tr class="bold">
+                            <td>STT</td>
+                            <td>Tên</td>
+                            <td>Tên sản phẩm/Số lượng</td>
+                            <td>Tổng tiền</td>
+                            <td>Địa chỉ</td>
+                            <td>Số điện thoại</td>
+                        </tr>
+                        <?php
+                            try {
+
+                                if (isset($_GET['page'])) {
+                                    $page = $_GET['page'];
                                 } else {
-                                    echo '
-                                    <li><a href="?page=' . $i . '">' . $i . '</a></li>';
+                                    $page = 1;
                                 }
+                                $limit = 10;
+                                $start = ($page - 1) * $limit;
+
+                                $sql = "SELECT * from orders, order_details, product
+                                where order_details.order_id=orders.id and product.id=order_details.product_id ORDER BY order_date DESC limit $start,$limit ";
+                                $order_details_List = executeResult($sql);
+                                $total = 0;
+                                $count = 0;
+                                // if (is_array($order_details_List) || is_object($order_details_List)){
+                                    
+                                foreach ($order_details_List as $item) {
+                                    echo '
+                                        <tr style="text-align: center;">
+                                            <td>' . (++$count) . '</td>
+                                            <td>' . $item['fullname'] . '</td>
+                                            <td>' . $item['title'] . '<br>(<strong>' . $item['num'] .'</strong>) </td>
+                                            <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
+                                            <td>' . $item['address'] . '</td>
+                                            <td class="b-500">' . $item['phone_number'] . '</td>
+                                        </tr>
+                                    ';
+                                }
+                            } catch (Exception $e) {
+                                die("Lỗi thực thi sql: " . $e->getMessage());
                             }
                             ?>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </section>
+                    </table>
+                </section>
+            </main>
+        </div>
     </div>
-</main>
-<?php require_once('layout/footer.php'); ?>
-</div>
 </body>
+<style>
+    #wrapper{
+        padding-bottom: 5rem;
+    }
+    .b-500 {
+        font-weight: 500;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .green {
+        color: green;
+    }
+</style>
 
 </html>
