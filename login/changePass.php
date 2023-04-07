@@ -41,10 +41,7 @@ require_once('../database/dbhelper.php');
                                     echo '<li><a href="../thucdon.php?id_category=' . $item['id'] . '">' . $item['name'] . '</a></li>';
                                 }
                                 ?>
-                                <!-- <li><a href="thucdon.php?page=trasua">Trà sữa</a></li>
-                                <li><a href="thucdon.php?page=monannhe">Món ăn nhẹ</a></li>
-                                <li><a href="thucdon.php?page=banhmi">Bánh mì</a></li>
-                                <li><a href="thucdon.php?page=caphe">Cà phê</a></li> -->
+s
                             </ul>
                         </li>
                         <li><a href="../about.php">Về chúng tôi</a></li>

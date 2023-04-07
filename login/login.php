@@ -44,10 +44,7 @@ require_once('../database/dbhelper.php');
                                     echo '<li><a href="../thucdon.php?id_category=' . $item['id'] . '">' . $item['name'] . '</a></li>';
                                 }
                                 ?>
-                                <!-- <li><a href="thucdon.php?page=trasua">Trà sữa</a></li>
-                                <li><a href="thucdon.php?page=monannhe">Món ăn nhẹ</a></li>
-                                <li><a href="thucdon.php?page=banhmi">Bánh mì</a></li>
-                                <li><a href="thucdon.php?page=caphe">Cà phê</a></li> -->
+
                             </ul>
                         </li>
                         <li><a href="../about.php">Về chúng tôi</a></li>
@@ -115,11 +112,13 @@ require_once('../database/dbhelper.php');
         $username = $_POST["username"];
         $password = $_POST["password"];
         // $password = md5($password);
-        $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' ";
+        //$sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' ";
+        $sql = "SELECT password FROM user WHERE username = '$username'";
         execute($sql);
         $con = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
         $user = mysqli_query($con, $sql);
-        if ($username == 'AdminThanh' && $password == 'thanh1010') {
+        $hashed_password = mysqli_fetch_assoc($user)['password'];
+        if ($username == 'admin123' && $password == '123456') {
             echo '<script language="javascript">
                 alert("Đăng nhập Admin thành công!"); 
                 window.location = "../admin/index.php";
@@ -129,7 +128,7 @@ require_once('../database/dbhelper.php');
             session_start();
             setcookie("username", $username, time() + 30 * 24 * 60 * 60, '/');
             setcookie("password", $password, time() + 30 * 24 * 60 * 60, '/');
-        } else if (mysqli_num_rows($user) > 0) {
+        } else if (password_verify($password, $hashed_password)) {
             echo '<script language="javascript">
                 alert("Đăng nhập thành công!"); 
                 window.location = "../index.php";

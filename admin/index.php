@@ -28,6 +28,9 @@
                     <a class="nav-link active" href="category/index.php">Thống kê</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="user/">Quản lý người dùng</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="category/index.php">Quản lý danh mục</a>
                 </li>
                 <li class="nav-item">
@@ -36,8 +39,26 @@
                 <li class="nav-item ">
                     <a class="nav-link " href="dashboard.php">Quản lý đơn hàng</a>
                 </li>
+                <section class="menu-right">
+                    <div class="login">
+                        <?php
+                        if (isset($_COOKIE['username'])) {
+                            $username=$_COOKIE['username'];
+                                echo '
+                                
+                                <a href="login/logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                            </div>
+                            ';
+                            }
+
+                        ?>
+                    </div>
+                </section>
             </ul>
+            
         </header>
+        
+        
         <div class="container">
             <main>
                 <h1>Bảng thống kê</h1>
@@ -54,7 +75,7 @@
                             <p><a href="product/">xem chi tiết➜</a></p>
                         </div>
                         <div class="sp kh">
-                            <p>Khách hàng</p>
+                            <p>Người Dùng</p>
                             <?php
                             $sql = "SELECT * FROM `user`";
                             $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);

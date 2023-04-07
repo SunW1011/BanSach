@@ -47,7 +47,7 @@ require 'PHPMailer/src/SMTP.php';
         // set the SMTP port for the GMAIL server
         $mail->Port = "465";
         $mail->From = "nhatvobh2001@gmail.com"; //mail nguoi nhan
-        $mail->FromName='Bán Đồ Ăn Online';
+        $mail->FromName='Books Shop Online';
         $mail->AddAddress($email, 'reciever_name');
         $mail->Subject  =  'Reset Password';
         $mail->IsHTML(true);

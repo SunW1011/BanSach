@@ -36,10 +36,6 @@ require_once('database/dbhelper.php');
                                         echo '<li><a href="thucdon.php?id_category=' . $item['id'] . '">'.$item['name'].'</a></li>';
                                     }
                                 ?>
-                                <!-- <li><a href="thucdon.php?page=trasua">Trà sữa</a></li>
-                                <li><a href="thucdon.php?page=monannhe">Món ăn nhẹ</a></li>
-                                <li><a href="thucdon.php?page=banhmi">Bánh mì</a></li>
-                                <li><a href="thucdon.php?page=caphe">Cà phê</a></li> -->
                             </ul>
                         </li>
                         <li><a href="about.php">Về chúng tôi</a></li>
@@ -69,7 +65,7 @@ require_once('database/dbhelper.php');
                         <?php
                         if (isset($_COOKIE['username'])) {
                             $username=$_COOKIE['username'];
-                            if ($username == 'AdminThanh'|| $username == 'admin') {
+                            if ($username == 'admin123'|| $username == '123456') {
                                 echo '<a style="color:black;" href="">' . $_COOKIE['username'] . '</a>
                                 <div class="logout">
                                     <a href="admin/"><i class="fas fa-user-edit"></i>Admin</a> <br>

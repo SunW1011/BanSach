@@ -43,10 +43,7 @@ require_once('../database/dbhelper.php');
                   echo '<li><a href="../thucdon.php?id_category=' . $item['id'] . '">' . $item['name'] . '</a></li>';
                 }
                 ?>
-                <!-- <li><a href="thucdon.php?page=trasua">Trà sữa</a></li>
-                                <li><a href="thucdon.php?page=monannhe">Món ăn nhẹ</a></li>
-                                <li><a href="thucdon.php?page=banhmi">Bánh mì</a></li>
-                                <li><a href="thucdon.php?page=caphe">Cà phê</a></li> -->
+
               </ul>
             </li>
             <li><a href="../about.php">Về chúng tôi</a></li>
@@ -138,6 +135,9 @@ require_once('../database/dbhelper.php');
       $repass = $_POST['repassword'];
       $phone = $_POST['phone'];
       $email = $_POST['email'];
+      //
+      $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+
       //kiểm tra trùng paswword không
       if ($pass != $repass) {
         echo '<script language="javascript">
@@ -157,7 +157,7 @@ require_once('../database/dbhelper.php');
              </script>';
         die();
       }
-      $sql = 'INSERT INTO user(hoten,username,password,phone,email) values ("' . $name . '","' . $username . '","' . $pass . '","' . $phone . '","' . $email . '")';
+      $sql = 'INSERT INTO user(hoten,username,password,phone,email) values ("' . $name . '","' . $username . '","' . $hashed_password . '","' . $phone . '","' . $email . '")';
       execute($sql);
       echo '<script language="javascript">
                 alert("Bạn đăng ký thành công!");

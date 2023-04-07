@@ -33,10 +33,7 @@ require_once('../database/dbhelper.php');
                                     echo '<li><a href="../thucdon.php?id_category=' . $item['id'] . '">' . $item['name'] . '</a></li>';
                                 }
                                 ?>
-                                <!-- <li><a href="thucdon.php?page=trasua">Trà sữa</a></li>
-                                <li><a href="thucdon.php?page=monannhe">Món ăn nhẹ</a></li>
-                                <li><a href="thucdon.php?page=banhmi">Bánh mì</a></li>
-                                <li><a href="thucdon.php?page=caphe">Cà phê</a></li> -->
+
                             </ul>
                         </li>
                         <li><a href="../about.php">Về chúng tôi</a></li>
@@ -119,8 +116,13 @@ require_once('../database/dbhelper.php');
             $subject = $_POST['subject']; // Tiêu đề email
             $message = $_POST['message']; // Nội dung email
             $mail = new PHPMailer\PHPMailer\PHPMailer(true);  //true: cho phép các trường hợp ngoại lệ
-
-
+            
+            $random_password = $_POST['password'];
+            $db_password = md5($random_password); 
+            echo md5($db_password);
+            $sql = "UPDATE user SET password='$db_password'  
+                WHERE email='$email'";
+            //echo $db_password;
             $sql = "SELECT * FROM user WHERE email= '$email'";
             $kq = $conn->query($sql);
             $numrows_email = $kq->rowCount();
@@ -142,19 +144,19 @@ require_once('../database/dbhelper.php');
                 $mail->CharSet  = "utf-8";
                 $mail->Host = 'smtp.gmail.com';  // khai báo SMTP servers
                 $mail->SMTPAuth = true; // Enable authentication
-                $nguoigui = 'hellook332@gmail.com'; // Tài khoản Email
-                $matkhau = 'thanh1010'; // Mật khẩu Email
+                $nguoigui = 'nhatvobh2001@gmail.com'; // Tài khoản Email
+                $matkhau = 'ojzcegbqsqwkbufg'; // Mật khẩu Email
                 $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
                 $mail->Port = 465;  // Port kết nối: khai báo 465 hoặc 587                
 
 
                 // Recipients - Người nhận
-                $tennguoigui = 'Nguyễn Đăng Thành'; // Tên người gửi lấy từ form nhập
+                $tennguoigui = 'Võ Xuân Nhật'; // Tên người gửi lấy từ form nhập
                 $mail->Username = $nguoigui; // SMTP username
                 $mail->Password = $matkhau;   // SMTP password
                 $mail->setFrom($nguoigui, $tennguoigui); //mail và tên người nhận 
                 $to = $email; // Email cần gửi đến lấy từ form nhập
-                $to_name = "Nguyễn Đăng Thành"; // Tên người cần gửi đến
+                $to_name = "Võ Xuân Nhật"; // Tên người cần gửi đến
 
                 // Content 
                 $mail->addAddress($to, $to_name); //mail và tên người nhận  

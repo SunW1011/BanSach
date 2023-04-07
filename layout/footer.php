@@ -15,22 +15,22 @@
     </div>
     <div class="link">
       <div class="col">
-        <a href="">Về Hutech Food</a>
+        <a href="">Về Books Store</a>
         <a href="">Về Hutech</a>
         <a href="https://dangthanh.site">Blogs</a>
       </div>
       <div class="col">
-        <a href="">Mở quán trên Hutech Food</a>
-        <a href="">Trở thành tài xế Ship</a>
+        <a href="">Các chi nhánh Books Store</a>
+        <a href="">Trở thành tài xế</a>
       </div>
       <div class="col">
         <a href="">Trung tâm hỗ trợ</a>
         <a href="">Câu hỏi thường gặp</a>
       </div>
       <div class="icon">
-        <a href=""><i class="fab fa-facebook-square"></i></a>
-        <a href=""><i class="fab fa-instagram-square"></i></a>
-        <a href=""><i class="fab fa-twitter-square"></i></a>
+        <a href="https://www.facebook.com/sunnn.1011"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://www.instagram.com/sunnn.1011/"><i class="fab fa-instagram-square"></i></a>
+        <a href="https://github.com/SunW1011"><i class="fab fa-github-square"></i></a>
       </div>
     </div>
     <div class="bottom">
@@ -43,7 +43,7 @@
 </footer>
 <style>
   footer {
-    background-color: #00B14C;
+    background-color: #212121;
     width: 100%;
     margin: 0px auto;
     margin-top: 1rem;

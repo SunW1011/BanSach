@@ -41,14 +41,7 @@ if (isset($_GET['id'])) {
                             <img src="<?='admin/product/'.$product['thumbnail'] ?>" alt="">
                             <div class="about">
                                 <p><?= $product['content'] ?></p>
-                                <div class="size">
-                                    <p>Size:</p>
-                                    <ul>
-                                        <li><a href="">S</a></li>
-                                        <li><a href="">M</a></li>
-                                        <li><a href="">L</a></li>
-                                    </ul>
-                                </div>
+                                
                                 <div class="number">
                                     <span class="number-buy">Số lượng</span>
                                     <input id="num" type="number" value="1" min="1" onchange="updatePrice()">
@@ -105,7 +98,7 @@ if (isset($_GET['id'])) {
             </section>
             <section class="restaurants">
                 <div class="title">
-                    <h1>Thực đơn tại quán <span class="green">Thành Coffee</span></h1>
+                    <h1>Sách đề xuất <span class="green">Books Store</span></h1>
                 </div>
                 <div class="product-restaurants">
                     <div class="row">
