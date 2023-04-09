@@ -45,7 +45,7 @@ header section.logo a img {
   text-decoration: none;
   color: rgb(43, 38, 38);
   padding: 10px;
-  /* background-color: #f7f7f7; */
+  background-color: #f7f7f7;
   text-transform: uppercase;
   font-weight: 700;
   font-family: Muli, Futura, Helvetica, Arial, sans-serif;
@@ -365,7 +365,6 @@ section.main section.recently .product-recently .row .col .more .time img {
   width: 24px;
   height: 24px;
 }
-/* end mon ngon gần bạn  */
 
 section.main section.restaurants {
   padding: 3rem 0;

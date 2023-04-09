@@ -117,11 +117,9 @@ require_once('../database/dbhelper.php');
             $message = $_POST['message']; // Nội dung email
             $mail = new PHPMailer\PHPMailer\PHPMailer(true);  //true: cho phép các trường hợp ngoại lệ
             
-            $random_password = $_POST['password'];
-            $db_password = md5($random_password); 
-            echo md5($db_password);
-            $sql = "UPDATE user SET password='$db_password'  
-                WHERE email='$email'";
+            $pass = $_POST['password'];
+            $hashed_password = password_hash($pass, PASSWORD_DEFAULT); 
+            $sql = 'INSERT INTO user(password) values ("' . $hashed_password . '")';
             //echo $db_password;
             $sql = "SELECT * FROM user WHERE email= '$email'";
             $kq = $conn->query($sql);

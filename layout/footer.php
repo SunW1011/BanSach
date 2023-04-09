@@ -3,20 +3,26 @@
     <div class="logo">
       <a  href=""><img style="width:300px;height:170px;object-fit:containt" src="images/logo-hutech.png" alt=""></a>
       <div class="time" style="padding-left:50%;">
-        <a href="https://time.is/Vietnam" id="time_is_link" rel="nofollow"></a>
-        <span id="Vietnam_z418" style="font-size:40px"></span>
+        <a href="https://time.is/Ho_Chi_Minh_City" style="font-size: 40px; color: #0059C3" id="time_is_link" rel="nofollow">Hồ Chí Minh:</a>
+        <span id="Ho_Chi_Minh_City_z418" style="font-size:40px"></span>
         <script src="//widget.time.is/t.js"></script>
         <script>
           time_is_widget.init({
-            Vietnam_z418: {}
+            Ho_Chi_Minh_City_z418: {}
           });
         </script>
       </div>
+      <!-- <a href="https://time.is/Ho_Chi_Minh_City" id="time_is_link" rel="nofollow" style="font-size:36px">Thời gian ở Thành phố Hồ Chí Minh:</a>
+<span id="Ho_Chi_Minh_City_z418" style="font-size:36px"></span>
+<script src="//widget.time.is/t.js"></script>
+<script>
+time_is_widget.init({Ho_Chi_Minh_City_z418:{}});
+</script> -->
     </div>
     <div class="link">
       <div class="col">
         <a href="">Về Books Store</a>
-        <a href="">Về Hutech</a>
+        <a href="https://www.facebook.com/hutechuniversity">Về Hutech</a>
         <a href="https://dangthanh.site">Blogs</a>
       </div>
       <div class="col">
@@ -31,6 +37,9 @@
         <a href="https://www.facebook.com/sunnn.1011"><i class="fab fa-facebook-square"></i></a>
         <a href="https://www.instagram.com/sunnn.1011/"><i class="fab fa-instagram-square"></i></a>
         <a href="https://github.com/SunW1011"><i class="fab fa-github-square"></i></a>
+        <a href="https://www.youtube.com/@sunw1011"><i class="fab fa-youtube-square"></i></a>
+        <a href="https://www.youtube.com/@sunw1011"><i class="fab fa-google-plus-square"></i></a>
+        
       </div>
     </div>
     <div class="bottom">
